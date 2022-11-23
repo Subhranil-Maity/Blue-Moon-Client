@@ -50,10 +50,15 @@ def returnCode(code: int, msg: str = None):
     if msg is None: msg = ""
     if code == 1: msg = "Incorrect Password"
     if code == 2: msg = "File or Folder does not exists"
-    if code == 9:
+    if code == 999:
         pass
     else:
-        msg = "Unknown Error"
+        msg = "Unknown Error" if msg == "" else msg
+    return {
+        "code": code,
+        "msg":  msg
+    }
+
 
 
 def returnDir(loc: str):
