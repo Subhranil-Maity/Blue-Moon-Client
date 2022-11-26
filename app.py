@@ -46,7 +46,11 @@ codes:
 '''
 
 
-def returnCode(code: int, msg: str = None):
+def returnCode(
+        code: int, 
+        msg: str = None,
+        extras: any = None,
+        data: any = None):
     if msg is None: msg = ""
     if code == 1: msg = "Incorrect Password"
     if code == 2: msg = "File or Folder does not exists"
@@ -56,7 +60,8 @@ def returnCode(code: int, msg: str = None):
         msg = "Unknown Error" if msg == "" else msg
     return {
         "code": code,
-        "msg":  msg
+        "msg":  msg,
+        extras: data
     }
 
 
@@ -93,8 +98,8 @@ def root():
 @app.route('/dir/<string:pwd>/<string:loc>', methods=['GET'])
 def get_dir(pwd: str, loc):
     try:
-        if not check_pwd(pwd): return returnCode(1)
-        if not os.path.isdir(loc): return returnCode(2)
+        if not check_pwd(pwd): return returnCode(1, extras="content", data= [])
+        if not os.path.isdir(loc): return returnCode(2, extras="content", data= [])
         return returnDir(loc)
     except Exception as e:
         return returnCode(e)
