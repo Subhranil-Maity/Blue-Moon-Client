@@ -72,10 +72,9 @@ def returnDir(loc: str):
         else:
             types = "unknown"
         items.append({
-            item: {
+                "name": item,
                 "type": types,
-                "size": "" if not os.path.isfile(loc + item) else os.path.getsize(loc + item)
-            }
+                "size": -1 if not os.path.isfile(loc + item) else os.path.getsize(loc + item)
         })
     return {
         "path": loc,
