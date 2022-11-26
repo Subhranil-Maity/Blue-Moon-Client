@@ -84,7 +84,8 @@ def returnDir(loc: str):
     return {
         "path": loc,
         "content": items,
-        "code": 0
+        "code": 0,
+        "msg": ""
     }
 
 
