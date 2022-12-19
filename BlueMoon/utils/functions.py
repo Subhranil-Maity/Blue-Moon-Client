@@ -1,6 +1,7 @@
 import os
 
-def returnCode(
+
+def return_code(
         code: int,
         msg: str = None,
         extras: any = None,
@@ -14,9 +15,10 @@ def returnCode(
         msg = "Unknown Error" if msg == "" else msg
     return {
         "code": code,
-        "msg":  msg,
+        "msg": msg,
         extras: data
     }
+
 
 def returnDir(loc: str):
     if not loc.endswith("\\"): loc += "\\"
@@ -29,9 +31,9 @@ def returnDir(loc: str):
         else:
             types = "unknown"
         items.append({
-                "name": item,
-                "type": types,
-                "size": -1 if not os.path.isfile(loc + item) else os.path.getsize(loc + item)
+            "name": item,
+            "type": types,
+            "size": -1 if not os.path.isfile(loc + item) else os.path.getsize(loc + item)
         })
     return {
         "path": loc,

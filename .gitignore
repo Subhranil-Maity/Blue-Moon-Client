@@ -2,8 +2,11 @@
 /Blue_Moon_Client.egg-info/
 /Blue_Moon.egg-info/
 /__pycache__/
-
-
+/testdir/
+/*.pkl
+config.pkl
+config.json
+test.py
 # Created by https://www.toptal.com/developers/gitignore/api/pydev,pycharm,flask
 # Edit at https://www.toptal.com/developers/gitignore?templates=pydev,pycharm,flask
 

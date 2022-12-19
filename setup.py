@@ -10,13 +10,13 @@ with open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
 
 setup(
     name='Blue-Moon',
-    version='v0.0.1',
+    version='v0.1.0',
     packages=find_packages(),
     long_description_content_type="text/markdown",
     long_description=long_description,
     entry_points={
         'console_scripts': [
-            'bluemoon = src.app:start_server'
+            'bluemoon = BlueMoon.app:start_server'
         ]
     },
     url='https://github.com/Subhranil-Maity/Blue-Moon-Client',

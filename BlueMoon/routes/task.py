@@ -1,12 +1,12 @@
-from src.app import app
-from src.utils.auth import *
-from src.utils.functions import *
+from BlueMoon.app import app
+from BlueMoon.utils.auth import *
+from BlueMoon.utils.functions import *
 import os
 import psutil
 
 @app.route('/gettask/<string:pwd>/', methods=['GET'])
 def get_task(pwd):
-    if not check_pwd(pwd): return returnCode(1)
+    if not check_pwd(pwd): return return_code(1)
     try:
         processes = []
         for proc in psutil.process_iter():
@@ -19,5 +19,5 @@ def get_task(pwd):
             "process": processes
         }
     except Exception as e:
-        return returnCode(999, str(e))
+        return return_code(999, str(e))
 
