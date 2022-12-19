@@ -1,18 +1,22 @@
 from BlueMoon.app import app
 from BlueMoon.utils.auth import *
 from BlueMoon.utils.functions import *
+from flask import request
 import os
 
-@app.route('/delete/<string:pwd>/<string:path>', methods=['GET'])
-def delete(pwd, path: str):
-    if not check_pwd(pwd): return return_code(1)
+
+@app.route('/delete/', methods=['DELETE'])
+def delete():
+    pwd = request.args.get('pwd')
+    path = request.args.get('path')
+    if not check_pwd(pwd): return "error: invalid pwd"
     try:
         if os.path.isdir(path):
             os.system("rmdir /q /s " + path)
         elif os.path.isfile(path):
             os.system("del /f " + path)
         else:
-            return return_code(2)
-        return return_code(0)
+            return {}
+        return {}
     except Exception as e:
-        return return_code(999, str(e))
+        return str(e)

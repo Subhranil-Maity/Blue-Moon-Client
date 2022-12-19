@@ -6,18 +6,19 @@ def return_code(
         msg: str = None,
         extras: any = None,
         data: any = None):
-    if msg is None: msg = ""
-    if code == 1: msg = "Incorrect Password"
-    if code == 2: msg = "File or Folder does not exists"
-    if code == 999:
-        pass
-    else:
-        msg = "Unknown Error" if msg == "" else msg
-    return {
-        "code": code,
-        "msg": msg,
-        extras: data
-    }
+    return "error"
+    # if msg is None: msg = ""
+    # if code == 1: msg = "Incorrect Password"
+    # if code == 2: msg = "File or Folder does not exists"
+    # if code == 999:
+    #     pass
+    # else:
+    #     msg = "Unknown Error" if msg == "" else msg
+    # return {
+    #     "code": code,
+    #     "msg": msg,
+    #     extras: data
+    # }
 
 
 def returnDir(loc: str):
