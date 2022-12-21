@@ -1,10 +1,10 @@
 from BlueMoon.app import app
-from BlueMoon.utils.auth import *
-from BlueMoon.utils.functions import *
+from BlueMoon import VERSION
 import os
 
 @app.route('/')
 def root():
     return {
-        "Name": os.environ['COMPUTERNAME']
+        "Name": os.environ['COMPUTERNAME'],
+        "version": VERSION
     }

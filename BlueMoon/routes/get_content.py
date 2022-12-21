@@ -4,14 +4,15 @@ from BlueMoon.utils.functions import *
 from flask import request, send_file
 import os
 
+from BlueMoon.utils.get import get_path_params
 
-@app.route('/getfile/', methods=['GET'])
-def get_file():
+
+@app.route('/getfile', methods=['GET'])
+def get_file_route():
+    check_password(request.args)
     try:
-        pwd = request.args.get('pwd')
-        path = request.args.get('path')
-        if not check_pwd(pwd): return return_code(1)
-        name = path.split('\\')
-        return send_file(open(path, 'rb'), mimetype=None, download_name=name[len(name) - 1])
+        return get_file(
+            path=get_path_params(request.args)
+        )
     except Exception as e:
         return str(e)

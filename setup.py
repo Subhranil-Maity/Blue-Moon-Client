@@ -1,8 +1,7 @@
 import os
 from distutils.core import setup
-
+from BlueMoon import VERSION
 from setuptools import find_packages
-
 here = os.path.abspath(os.path.dirname(__file__))
 
 with open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
@@ -10,7 +9,7 @@ with open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
 
 setup(
     name='Blue-Moon',
-    version='v0.1.0',
+    version=VERSION,
     packages=find_packages(),
     long_description_content_type="text/markdown",
     long_description=long_description,
@@ -25,11 +24,8 @@ setup(
     author_email='thecodersubhranil@gmail.com',
     description='',
     classifiers=[
-        "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
-        "Operating System :: Unix",
-        "Operating System :: MacOS :: MacOS X",
     ]
 
 )

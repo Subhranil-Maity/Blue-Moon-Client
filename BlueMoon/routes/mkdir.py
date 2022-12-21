@@ -4,15 +4,15 @@ from BlueMoon.utils.functions import *
 from flask import request
 import os
 
+from BlueMoon.utils.get import get_name_params, get_path_params
+
 
 @app.route('/mkdir/', methods=['POST'])
-def mkdir():
+def mkdir_route():
     try:
-        pwd = request.args.get('pwd')
-        loc = request.args.get('loc')
-        name = request.args.get('name')
-        if not check_pwd(pwd): return return_code(1)
-        os.system("mkdir " + loc + "\\" + name)
-        return {}
+        return mkdir(
+            get_path_params(request.args),
+            get_name_params(request.args)
+        )
     except Exception as e:
-        return str(e)
+        return error(e)

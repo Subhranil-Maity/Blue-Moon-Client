@@ -1,18 +1,19 @@
 from flask import request
 
 from BlueMoon.app import app
-from BlueMoon.utils.auth import *
+from BlueMoon.utils.auth import check_password
+from BlueMoon.utils.get import get_path_params
 from BlueMoon.utils.functions import *
+from BlueMoon.utils.errors import *
 import os
 
 
-@app.route('/dir/', methods=['GET'])
-def get_dir():
+@app.route('/dir', methods=['GET'])
+def get_dir_route():
+    check_password(request.args)
     try:
-        pwd = request.args.get('pwd')
-        loc = request.args.get('loc')
-        if not check_pwd(pwd): return return_code(1, extras="content", data=[])
-        if not os.path.isdir(loc): return return_code(2, extras="content", data=[])
-        return returnDir(loc)
+        return get_dir(
+            get_path_params(request.args)
+        )
     except Exception as e:
-        return return_code(e)
+        return error(e)
